@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public Text winText;
     private Rigidbody rb;
     private int count;
+    public Vector3 lastvelocity = Vector3.zero;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour
         Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
 
         rb.AddForce(movement * speed);
+        lastvelocity = rb.velocity;
     }
 
     void OnTriggerEnter(Collider other)
